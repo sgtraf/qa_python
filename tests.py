@@ -57,3 +57,10 @@ class TestBooksCollector:
             if collector_full.books_genre.get(item) == 'Ужасы' or collector_full.books_genre[item] == 'Детективы':
                 isTrue = False
         assert isTrue
+
+    def test_add_book_in_favorites_books_book_in_favorites(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        collector.add_book_in_favorites('The Shawshank Redemption')
+
+        assert collector.favorites[0] == 'The Shawshank Redemption'

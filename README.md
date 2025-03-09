@@ -8,3 +8,4 @@
 проверка получения спискв книг с определённым жанром. 
 5. Добавил тест test_get_books_genre_collecor_books_genre
 6. Добавил тест test_get_books_for_children_collecor_books_for_children
+7. Добавил тест test_add_book_in_favorites_books_book_in_favorites
