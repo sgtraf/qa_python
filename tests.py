@@ -39,3 +39,10 @@ class TestBooksCollector:
             if collector_full.books_genre[item] != 'Фантастика':
                 isTrue = False
         assert isTrue
+
+    def test_get_books_genre_collecor_books_genre(self, collector_full):
+        books_genre = {}
+        #заполнем коллекцию данными
+        books_genre = collector_full.books_genre
+        #проверяем, что выводятся книги нужного жанра
+        assert collector_full.get_books_genre() == books_genre
