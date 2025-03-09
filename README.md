@@ -10,3 +10,5 @@
 6. Добавил тест test_get_books_for_children_collecor_books_for_children
 7. Добавил тест test_add_book_in_favorites_books_book_in_favorites
 8. Добавил тест test_delete_book_from_favorites_books_book_not_in_favorites
+9. Добавил тест test_get_list_of_favorites_books_collector_book_in_favorites
+10. Добавил негативные тесты с помощью параметризациии test_add_new_book_add_negative_input_book_not_added
