@@ -75,3 +75,11 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('The Shawshank Redemption')
 
         assert collector.favorites == []
+
+    def test_get_list_of_favorites_books_collector_book_in_favorites(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        # добавляем книгу в избранное
+        collector.add_book_in_favorites('The Shawshank Redemption')
+
+        assert collector.favorites == collector.get_list_of_favorites_books()
