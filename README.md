@@ -3,4 +3,6 @@
 1. Добавил тест test_add_new_book_add_one_book_book_added
 проверка добавления новой книги.
 2. Добавил тест test_set_book_genre_book_genre_genre_added проверки добавления жанра.
-3. Добавил тест test_set_book_genre_book_genre_genre_added проверка получения жанра книги по ее названию.
+3. Добавил тест test_get_book_genre_book_genre_genre_get проверка получения жанра книги по ее названию.
+4. Добавил тест test_get_books_with_specific_genre_book_genre_specific_books
+проверка получения спискв книг с определённым жанром. 
