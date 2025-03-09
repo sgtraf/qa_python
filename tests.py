@@ -46,3 +46,14 @@ class TestBooksCollector:
         books_genre = collector_full.books_genre
         #проверяем, что выводятся книги нужного жанра
         assert collector_full.get_books_genre() == books_genre
+
+    def test_get_books_for_children_collecor_books_for_children(self, collector_full):
+        books_for_children =[]
+        #заполнем коллекцию данными
+        books_for_children = collector_full.get_books_for_children()
+        #проверяем, что выводятся книги нужного жанра
+        isTrue = True
+        for item in books_for_children:
+            if collector_full.books_genre.get(item) == 'Ужасы' or collector_full.books_genre[item] == 'Детективы':
+                isTrue = False
+        assert isTrue

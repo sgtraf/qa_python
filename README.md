@@ -6,3 +6,5 @@
 3. Добавил тест test_get_book_genre_book_genre_genre_get проверка получения жанра книги по ее названию.
 4. Добавил тест test_get_books_with_specific_genre_book_genre_specific_books
 проверка получения спискв книг с определённым жанром. 
+5. Добавил тест test_get_books_genre_collecor_books_genre
+6. Добавил тест test_get_books_for_children_collecor_books_for_children
