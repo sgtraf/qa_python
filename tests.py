@@ -29,7 +29,7 @@ class TestBooksCollector:
         assert collector.books_genre.get('The Shawshank Redemption') == 'Фантастика'
 
     def test_get_books_with_specific_genre_book_genre_specific_books(self, collector_full):
-        books_fantasy =[]
+
         #заполнем коллекцию данными
         books_fantasy = collector_full.get_books_with_specific_genre('Фантастика')
         #проверяем, что выводятся книги нужного жанра
@@ -40,14 +40,12 @@ class TestBooksCollector:
         assert is_true
 
     def test_get_books_genre_collecor_books_genre(self, collector_full):
-        books_genre = {}
         #заполнем коллекцию данными
         books_genre = collector_full.books_genre
         #проверяем, что выводятся книги нужного жанра
         assert collector_full.get_books_genre() == books_genre
 
     def test_get_books_for_children_collecor_books_for_children(self, collector_full):
-        books_for_children =[]
         #заполнем коллекцию данными
         books_for_children = collector_full.get_books_for_children()
         #проверяем, что выводятся книги нужного жанра
