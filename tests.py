@@ -1,24 +1,82 @@
+import pytest
+
 from main import BooksCollector
 
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
 class TestBooksCollector:
 
-    # пример теста:
-    # обязательно указывать префикс test_
-    # дальше идет название метода, который тестируем add_new_book_
-    # затем, что тестируем add_two_books - добавление двух книг
-    def test_add_new_book_add_two_books(self):
-        # создаем экземпляр (объект) класса BooksCollector
-        collector = BooksCollector()
+    def test_add_new_book_add_one_book_book_added(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        # проверяем, что добавилось именно одна книга
+        assert len(collector.books_genre) == 1
 
-        # добавляем две книги
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+    def test_set_book_genre_book_genre_genre_added(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        #устанавливаем жанр
+        collector.set_book_genre('The Shawshank Redemption', 'Фантастика')
+        #проверяем, что добавился жанр
+        assert collector.books_genre['The Shawshank Redemption'] == 'Фантастика'
 
-        # проверяем, что добавилось именно две
-        # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
-        assert len(collector.get_books_rating()) == 2
+    def test_get_book_genre_book_genre_genre_get(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        #устанавливаем жанр
+        collector.set_book_genre('The Shawshank Redemption', 'Фантастика')
+        #проверяем, что добавился жанр
+        assert collector.books_genre.get('The Shawshank Redemption') == 'Фантастика'
 
-    # напиши свои тесты ниже
-    # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+    def test_get_books_with_specific_genre_book_genre_specific_books(self, collector_full):
+
+        #заполнем коллекцию данными
+        books_fantasy = collector_full.get_books_with_specific_genre('Фантастика')
+        #проверяем, что выводятся книги нужного жанра
+        assert list(filter(lambda x: collector_full.books_genre[x] == 'Фантастика', books_fantasy)) != []
+
+    def test_get_books_genre_collecor_books_genre(self, collector_full):
+        #заполнем коллекцию данными
+        books_genre = collector_full.books_genre
+        #проверяем, что выводятся книги нужного жанра
+        assert collector_full.get_books_genre() == books_genre
+
+    def test_get_books_for_children_collecor_books_for_children(self, collector_full):
+        #заполнем коллекцию данными
+        books_for_children = collector_full.get_books_for_children()
+        #проверяем, что выводятся книги нужного жанра
+        assert list(filter(lambda x: collector_full.books_genre[x] == 'Ужасы' or collector_full.books_genre[x] == 'Детективы', books_for_children)) == []
+
+    def test_add_book_in_favorites_books_book_in_favorites(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        #добавляем книгу в избранное
+        collector.add_book_in_favorites('The Shawshank Redemption')
+
+        assert collector.favorites[0] == 'The Shawshank Redemption'
+
+    def test_delete_book_from_favorites_books_book_not_in_favorites(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        # добавляем книгу в избранное
+        collector.add_book_in_favorites('The Shawshank Redemption')
+        # удаляем книгу из избранного
+        collector.delete_book_from_favorites('The Shawshank Redemption')
+
+        assert collector.favorites == []
+
+    def test_get_list_of_favorites_books_collector_book_in_favorites(self, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        # добавляем книгу в избранное
+        collector.add_book_in_favorites('The Shawshank Redemption')
+
+        assert collector.favorites == collector.get_list_of_favorites_books()
+
+    @pytest.mark.parametrize('name', ['Ghjhjhjhdhdhdhfhfjfjjk kfkdkdkdkdkskskdkfgk', 'The Shawshank Redemption'] )
+    def test_add_new_book_add_negative_input_book_not_added(self, name, collector):
+        #добавляем книгу
+        collector.add_new_book('The Shawshank Redemption')
+        collector.add_new_book(name)
+        # проверяем, что добавилось именно одна книга
+        assert len(collector.books_genre) == 1
