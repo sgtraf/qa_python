@@ -33,11 +33,11 @@ class TestBooksCollector:
         #заполнем коллекцию данными
         books_fantasy = collector_full.get_books_with_specific_genre('Фантастика')
         #проверяем, что выводятся книги нужного жанра
-        isTrue = True
+        is_true = True
         for item in books_fantasy:
             if collector_full.books_genre[item] != 'Фантастика':
-                isTrue = False
-        assert isTrue
+                is_true = False
+        assert is_true
 
     def test_get_books_genre_collecor_books_genre(self, collector_full):
         books_genre = {}
@@ -51,11 +51,11 @@ class TestBooksCollector:
         #заполнем коллекцию данными
         books_for_children = collector_full.get_books_for_children()
         #проверяем, что выводятся книги нужного жанра
-        isTrue = True
+        is_true = True
         for item in books_for_children:
             if collector_full.books_genre.get(item) == 'Ужасы' or collector_full.books_genre[item] == 'Детективы':
-                isTrue = False
-        assert isTrue
+                is_true = False
+        assert is_true
 
     def test_add_book_in_favorites_books_book_in_favorites(self, collector):
         #добавляем книгу
