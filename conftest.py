@@ -11,7 +11,7 @@ def collector():
     return collector
 
 @pytest.fixture
-# фикстура, которая набор коллекции книг
+# фикстура, которая создает набор коллекции книг
 def collector_full():
     collector = BooksCollector()
     collector.books_genre = {'The Fifth Element': 'Фантастика', 'Infinite': 'Фантастика',
